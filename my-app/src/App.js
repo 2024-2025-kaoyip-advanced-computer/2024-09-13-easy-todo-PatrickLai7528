@@ -3,16 +3,20 @@ import './App.css';
 import {useState} from "react";
 
 function App() {
-  
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
+        {
+          isLogin ?"登錄了":"未登錄啊"
+        }
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           i am patrick, welcome to react
           <button onClick={()=>{
+            setIsLogin(true)
             console.log("hi, button is pressed")
-          }}>press me</button>
+          }}>Log in</button>
         </p>
         <a
           className="App-link"
