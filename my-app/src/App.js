@@ -3,18 +3,19 @@ import './App.css';
 import {useState} from "react";
 
 function App() {
+  const [count, setCount] = useState(0)
   const [isLogin, setIsLogin] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
         {
-          isLogin ?"登錄了":"未登錄啊"
+          count
         }
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           i am patrick, welcome to react
           <button onClick={()=>{
-            setIsLogin(true)
+            setCount(count + 1)
             console.log("hi, button is pressed")
           }}>Log in</button>
         </p>
