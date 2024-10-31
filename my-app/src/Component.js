@@ -1,11 +1,21 @@
+import { useState } from "react"
 export const SuperLaiSir = () => {
-    const schoolNames = ["教業", "培道", '培正', '鏡平', '勞校']
+    // 列表解構
+    const [schoolNames, setSchoolNames] = useState(["教業", "培道", '培正', '鏡平', '勞校'])
+    //const schoolNames = 
     return (
         <>
             <h1>超級賴SIR</h1>
+            <button onClick={() => {
+                const newSchoolNames = schoolNames.filter((_, index) => index !== schoolNames.length - 1)
+                setSchoolNames(newSchoolNames)
+            }}>刪除</button>
             {
-                schoolNames.map(function (schoolName) {
-                    return schoolName === "教業" ? null : <SuperSchool schoolName={schoolName} />
+                schoolNames.filter(function (schoolName) {
+                    //return schoolName !== "教業"
+                    return true
+                }).map(function (schoolName, index) {
+                    return <SuperSchool key={index} schoolName={schoolName} />
                 })
             }
         </>
@@ -13,10 +23,15 @@ export const SuperLaiSir = () => {
 }
 
 function SuperSchool(props) {
+    const [isLove, setIsLove] = useState(false)
     return <>
-        <h2>超級  {props.schoolName === "教業" ? "超級" : ""}   {props.schoolName}</h2>
+        <h2>超級  {props.schoolName === "教業" ? "超級" : ""}   {props.schoolName}
+        </h2>
+        <input type='checkbox' onChange={() => {
+            setIsLove(!isLove)
+        }} />
         {
-            props.schoolName === "教業" ? <span>我愛教業</span> : null
+            isLove ? <span>我愛{props.schoolName}</span> : null
         }
     </>
     /**
