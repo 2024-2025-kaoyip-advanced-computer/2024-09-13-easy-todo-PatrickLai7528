@@ -1,21 +1,45 @@
 import { useState } from "react"
 export const SuperLaiSir = () => {
     // 列表解構
-    const [schoolNames, setSchoolNames] = useState(["教業", "培道", '培正', '鏡平', '勞校'])
-    //const schoolNames = 
+    const [schools, setSchools] = useState([
+        {
+            schoolName:"教業",
+            isLove: true
+        },
+        {
+            schoolName:"培道",
+            isLove: false
+        }
+    ])
+    const [value ,setValue] = useState("")
     return (
         <>
             <h1>超級賴SIR</h1>
+            <input value={value} onChange={(event) =>{
+                setValue(event.target.value);
+            }}/>
+            <button onClick={()=>{
+                setSchools([
+                    ...schools,
+                    value
+                ])
+            }}>
+                確認
+            </button>
             <button onClick={() => {
-                const newSchoolNames = schoolNames.filter((_, index) => index !== schoolNames.length - 1)
-                setSchoolNames(newSchoolNames)
+                const newSchoolNames = schools.filter((_, index) => index !== schools.length - 1)
+                setSchools(newSchoolNames)
             }}>刪除</button>
             {
-                schoolNames.filter(function (schoolName) {
+                schools.filter(function (schoolName) {
                     //return schoolName !== "教業"
                     return true
-                }).map(function (schoolName, index) {
-                    return <SuperSchool key={index} schoolName={schoolName} />
+                }).map(function (school, index) {
+                    return <SuperSchool 
+                        key={index} 
+                        schoolName={school.schoolName}
+                        isLove={school.isLove}
+                        />
                 })
             }
         </>
@@ -23,15 +47,14 @@ export const SuperLaiSir = () => {
 }
 
 function SuperSchool(props) {
-    const [isLove, setIsLove] = useState(false)
     return <>
         <h2>超級  {props.schoolName === "教業" ? "超級" : ""}   {props.schoolName}
         </h2>
         <input type='checkbox' onChange={() => {
-            setIsLove(!isLove)
+            //setIsLove(!isLove)
         }} />
         {
-            isLove ? <span>我愛{props.schoolName}</span> : null
+            props.isLove ? <span>我愛{props.schoolName}</span> : null
         }
     </>
     /**
