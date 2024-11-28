@@ -37,6 +37,11 @@ export const SuperLaiSir = () => {
                 }).map(function (school, index) {
                     return <SuperSchool 
                         key={index} 
+                        onChange={(newSchool) =>{
+                            let newSchools = [...schools];
+                            newSchools[index] = newSchool;
+                            setSchools(newSchools)
+                        }}
                         schoolName={school.schoolName}
                         isLove={school.isLove}
                         />
@@ -47,11 +52,16 @@ export const SuperLaiSir = () => {
 }
 
 function SuperSchool(props) {
+    console.log(props)
     return <>
         <h2>超級  {props.schoolName === "教業" ? "超級" : ""}   {props.schoolName}
         </h2>
-        <input type='checkbox' onChange={() => {
+        <input checked={props.isLove} type='checkbox' onChange={() => {
             //setIsLove(!isLove)
+            props.onChange({
+                schoolName: props.schoolName,
+                isLove: !props.isLove
+            })
         }} />
         {
             props.isLove ? <span>我愛{props.schoolName}</span> : null
