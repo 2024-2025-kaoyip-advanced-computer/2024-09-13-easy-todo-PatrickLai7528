@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Button } from "antd"
+import { Input } from "antd";
 export const SuperLaiSir = () => {
     // 列表解構
     const [schools, setSchools] = useState([
@@ -23,17 +25,17 @@ export const SuperLaiSir = () => {
             }}>
             <div>
             <h1>超級賴SIR</h1>
-            <input value={value} onChange={(event) =>{
+            <Input placeholder="請輸入一些東西~" value={value} onChange={(event) =>{
                 setValue(event.target.value);
             }}/>
-            <button onClick={()=>{
+            <Button type="primary" onClick={()=>{
                 setSchools([
                     ...schools,
                     value
                 ])
             }}>
                 確認
-            </button>
+            </Button>
             <button onClick={() => {
                 const newSchoolNames = schools.filter((_, index) => index !== schools.length - 1)
                 setSchools(newSchoolNames)
