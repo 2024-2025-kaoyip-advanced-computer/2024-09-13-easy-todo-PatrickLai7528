@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Button } from "antd"
-import { Input } from "antd";
+import { Input } from "antd"
+import { Card } from "antd";
+
 export const SuperLaiSir = () => {
     // 列表解構
     const [schools, setSchools] = useState([
@@ -64,7 +66,7 @@ export const SuperLaiSir = () => {
 
 function SuperSchool(props) {
     console.log(props)
-    return <div style={{backgroundColor:"yellow", margin:"10px", padding:"10px"}}>
+    return <Card style={{ margin:"10px", padding:"10px" }}>
         <h2>超級  {props.schoolName === "教業" ? "超級" : ""}   {props.schoolName}
         </h2>
         <input checked={props.isLove} type='checkbox' onChange={() => {
@@ -77,7 +79,7 @@ function SuperSchool(props) {
         {
             props.isLove ? <span>我愛{props.schoolName}</span> : null
         }
-    </div>
+    </Card>
     /**
      * 如果schoolName是教業,  用span標籤, 顯示我愛教業
      */
