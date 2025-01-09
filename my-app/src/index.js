@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {SuperLaiSir} from "./Component"
+import {LaiSirIsBest} from "./Component"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SuperLaiSir/>
+    <LaiSirIsBest/>
   </React.StrictMode>
 );
 

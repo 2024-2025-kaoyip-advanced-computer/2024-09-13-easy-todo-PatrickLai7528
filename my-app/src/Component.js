@@ -3,9 +3,9 @@ import { Button } from "antd"
 import { Input } from "antd"
 import { Card } from "antd";
 
-export const SuperLaiSir = () => {
+export const LaiSirIsBest = () => {
     // 列表解構
-    const [schools, setSchools] = useState([
+    const [todo, setTodo] = useState([
         {
             schoolName:"教業",
             isLove: true
@@ -31,28 +31,28 @@ export const SuperLaiSir = () => {
                 setValue(event.target.value);
             }}/>
             <Button type="primary" onClick={()=>{
-                setSchools([
-                    ...schools,
+                setTodo([
+                    ...todo,
                     value
                 ])
             }}>
                 確認
             </Button>
             <button onClick={() => {
-                const newSchoolNames = schools.filter((_, index) => index !== schools.length - 1)
-                setSchools(newSchoolNames)
+                const newSchoolNames = todo.filter((_, index) => index !== todo.length - 1)
+                setTodo(newSchoolNames)
             }}>刪除</button>
             {
-                schools.filter(function (schoolName) {
+                todo.filter(function (schoolName) {
                     //return schoolName !== "教業"
                     return true
                 }).map(function (school, index) {
-                    return <SuperSchool 
+                    return <TodoItem 
                         key={index} 
                         onChange={(newSchool) =>{
-                            let newSchools = [...schools];
+                            let newSchools = [...todo];
                             newSchools[index] = newSchool;
-                            setSchools(newSchools)
+                            setTodo(newSchools)
                         }}
                         schoolName={school.schoolName}
                         isLove={school.isLove}
@@ -64,7 +64,7 @@ export const SuperLaiSir = () => {
     )
 }
 
-function SuperSchool(props) {
+function TodoItem(props) {
     console.log(props)
     return <Card style={{ margin:"10px", padding:"10px" }}>
         <h2>超級  {props.schoolName === "教業" ? "超級" : ""}   {props.schoolName}
