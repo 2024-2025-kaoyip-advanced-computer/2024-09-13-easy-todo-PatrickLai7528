@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "antd"
 import { Input } from "antd"
 import { Card } from "antd";
@@ -15,6 +15,23 @@ export const LaiSirIsBest = () => {
             isLove: false
         }
     ])
+    
+    useEffect(()=>{
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(response => response.json())
+            .then(json => {
+                setTodo(
+                    json.map(item => {
+                        return {
+                            schoolName: item.title,
+                            isLove: item.completed
+                        }
+                    })
+                )
+            })
+    }  ,[])
+
+    
     const [value ,setValue] = useState("")
     return (
         <div style={{
