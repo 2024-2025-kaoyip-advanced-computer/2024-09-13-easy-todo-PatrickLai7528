@@ -1,6 +1,8 @@
 import { Layout } from 'antd'; // 模塊引入
 import {MyMenu} from "./MyMenu"
 
+import {MyTodoList} from "./MyTodoList"
+
 //const { Header, Footer, Sider, Content } = Layout; // 對象解構
 
 const Header = Layout.Header;
@@ -14,7 +16,9 @@ export const MyLayout = () => {
             <Sider width={255} >
                 <MyMenu/>
             </Sider>
-            <Content>Content</Content>
+            <Content>
+                <MyTodoList/>
+            </Content>
         </Layout>
     </Layout>
 }
