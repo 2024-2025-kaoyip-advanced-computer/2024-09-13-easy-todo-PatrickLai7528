@@ -11,7 +11,7 @@ export const MyLayout = () => {
     return <Layout style={{ height: "100vh" }} >
         <Header >Header</Header>
         <Layout>
-            <Sider >
+            <Sider width={255} >
                 <MyMenu/>
             </Sider>
             <Content>Content</Content>

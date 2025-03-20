@@ -1,7 +1,7 @@
 import { Menu } from 'antd';
 
 export const MyMenu = () => {
-    const items = [
+  const items = [
         {
           key: 'sub1',
           label: 'Navigation One',
