@@ -1,5 +1,6 @@
 import { Space, Table, Tag } from 'antd';
-
+import { useState, useEffect } from 'react'
+import { supabase } from './utils/supabase'
 const columns = [
     {
       title: 'Name',
@@ -73,5 +74,14 @@ const columns = [
   ];
 
 export const MyTodoList = () => {
+  useEffect(() => {
+    async function getTodos() {
+      const { data } = await supabase.from('todo').select()
+      console.log(data)
+    }
+
+    getTodos()
+  }, [])
+
     return <Table columns={columns} dataSource={data} />
 }
